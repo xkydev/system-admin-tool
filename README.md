@@ -20,9 +20,6 @@ A comprehensive, cross-platform system administration toolkit with implementatio
   - [Linux (Bash)](#linux-bash)
   - [Windows (PowerShell)](#windows-powershell)
 - [Module Documentation](#-module-documentation)
-- [Architecture](#️-architecture)
-- [Contributing](#-contributing)
-- [License](#-license)
 
 ## 📁 Project Structure
 
