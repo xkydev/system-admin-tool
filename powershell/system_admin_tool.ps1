@@ -10,6 +10,7 @@ try {
     . (Join-Path $modulesPath "Find-LargestFiles.ps1")
     . (Join-Path $modulesPath "Show-MemoryUsage.ps1")
     . (Join-Path $modulesPath "Backup-DirectoryToUSB.ps1")
+    . (Join-Path $modulesPath "Show-NetworkInfo.ps1")
 } catch {
     Write-Host "Error loading modules: $_" -ForegroundColor Red
     Write-Host "Please ensure all module files are in the 'modules' subdirectory." -ForegroundColor Yellow
@@ -63,7 +64,7 @@ function Main {
     
     do {
         Show-Menu
-        $choice = Read-Host "Enter your choice (1-6)"
+        $choice = Read-Host "Enter your choice (1-7)"
         
         switch ($choice) {
             "1" {
@@ -87,11 +88,15 @@ function Main {
                 Wait-ForKeyPress
             }
             "6" {
+                Show-NetworkInfo
+                Wait-ForKeyPress
+            }
+            "7" {
                 Write-Host "`nExiting... Goodbye!" -ForegroundColor Green
                 return
             }
             default {
-                Write-Host "`nInvalid choice. Please select 1-6." -ForegroundColor Red
+                Write-Host "`nInvalid choice. Please select 1-7." -ForegroundColor Red
                 Start-Sleep -Seconds 2
             }
         }

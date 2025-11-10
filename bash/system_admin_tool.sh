@@ -27,7 +27,7 @@ for module in "$MODULES_DIR"/*.sh; do
 done
 
 # Verify all required functions are loaded
-required_functions=("show_menu" "show_system_users" "show_disk_information" "find_largest_files" "show_memory_usage" "backup_directory_to_usb")
+required_functions=("show_menu" "show_system_users" "show_disk_information" "find_largest_files" "show_memory_usage" "backup_directory_to_usb" "show_network_info")
 for func in "${required_functions[@]}"; do
     if ! declare -f "$func" > /dev/null; then
         echo -e "${RED}Error: Required function '$func' not found.${NC}"
@@ -42,7 +42,7 @@ done
 main() {
     while true; do
         show_menu
-        read -p "Enter your choice (1-6): " choice
+        read -p "Enter your choice (1-7): " choice
 
         case $choice in
             1)
@@ -71,13 +71,18 @@ main() {
                 read -p "Press Enter to continue..."
                 ;;
             6)
+                show_network_info
+                echo ""
+                read -p "Press Enter to continue..."
+                ;;
+        7)
                 echo ""
                 echo -e "${GREEN}Exiting... Goodbye!${NC}"
                 exit 0
                 ;;
             *)
                 echo ""
-                echo -e "${RED}Invalid choice. Please select 1-6.${NC}"
+                echo -e "${RED}Invalid choice. Please select 1-7.${NC}"
                 sleep 2
                 ;;
         esac

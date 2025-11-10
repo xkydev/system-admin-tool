@@ -45,10 +45,25 @@ function Backup-DirectoryToUSB {
         }
     }
     
+    # Confirmation step
+    Write-Host "`n--- CONFIRMATION ---" -ForegroundColor Cyan
+    Write-Host "You are about to back up the following directory:"
+    Write-Host "  Source:      $sourceDir" -ForegroundColor White
+    Write-Host "  Destination: $destDrive" -ForegroundColor White
+    Write-Host ""
+    
+    $confirm = ""
+    while ($confirm -notmatch '^[SN]$') {
+        $confirm = Read-Host "Do you want to proceed? (S/N)"
+    }
+
+    if ($confirm -ne 'S') {
+        Write-Host "`nBackup cancelled by user." -ForegroundColor Red
+        return
+    }
+
     # Perform backup
     Write-Host "`nStarting backup..." -ForegroundColor Yellow
-    Write-Host "Source: $sourceDir" -ForegroundColor White
-    Write-Host "Destination: $destDrive" -ForegroundColor White
     Write-Host ""
     
     try {

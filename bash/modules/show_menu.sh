@@ -11,7 +11,8 @@ show_menu() {
     echo -e "${YELLOW}3. Find Largest Files${NC}"
     echo -e "${YELLOW}4. Memory and Swap Usage${NC}"
     echo -e "${YELLOW}5. Backup Directory to USB${NC}"
-    echo -e "${RED}6. Exit${NC}"
+    echo -e "${YELLOW}6. Display Network Information${NC}"
+    echo -e "${RED}7. Exit${NC}"
     echo ""
     echo -e "${CYAN}============================================${NC}"
 }
