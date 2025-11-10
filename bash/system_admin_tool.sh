@@ -43,7 +43,7 @@ main() {
     while true; do
         show_menu
         read -p "Enter your choice (1-6): " choice
-        
+
         case $choice in
             1)
                 show_system_users

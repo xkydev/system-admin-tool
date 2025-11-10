@@ -1,65 +1,64 @@
 # System Administration Tool
 
-A comprehensive, cross-platform system administration toolkit with implementations for both Linux (Bash) and Windows (PowerShell). This modular tool provides essential system management capabilities through an intuitive menu-driven interface.
-
-## 🌟 Features
-
-- **Display System Users** - View all users with login information and statistics
-- **Display Filesystem/Disk Information** - Monitor disk usage and available space
-- **Find Largest Files** - Locate and list the largest files on your system
-- **Memory and Swap Usage** - View real-time memory statistics and utilization
-- **Backup Directory to USB** - Create backups with automatic catalog generation
-- **Modular Architecture** - Clean, maintainable code structure with separated modules
+A comprehensive, cross-platform system administration toolkit with implementations for both Linux (Bash) and Windows (PowerShell).  
+This modular tool provides essential system management capabilities through an intuitive menu-driven interface.
 
 ## 📋 Table of Contents
 
+- [Features](#-features)
 - [Project Structure](#-project-structure)
-- [Requirements](-#requirements)
-- [Installation](#-installation)
-- [Usage](#-usage)
-  - [Linux (Bash)](#linux-bash)
-  - [Windows (PowerShell)](#windows-powershell)
+- [Requirements](#-requirements)
+- [Installation & Usage](#-installation--usage)
 - [Module Documentation](#-module-documentation)
 
-## 📁 Project Structure
+## 🌟 Features
+
+- **Display System Users** - View all users with login/connection information and statistics
+- **Display Filesystem/Disk Information** - Monitor disk usage and available space
+- **Find Largest Files** - Locate and list the largest files under any path
+- **Memory and Swap Usage** - View real-time memory statistics and utilization
+- **Backup Directory to USB** - Create backups with automatic, detailed catalog generation
+- **Modular Architecture** - Maintainable, easy-to-extend code structure with separated modules
+
+## � Project Structure
 
 ```
-final_project_so/
+SYSTEM-ADMIN-TOOL/
 │
-├── README.md                          # This file - Main project documentation
+├── README.md                          # This file – Main project documentation (overview, structure)
 │
 ├── bash/                              # Linux/Unix implementation
 │   ├── README.md                      # Bash-specific documentation
-│   ├── system_admin_tool.sh           # Main entry point for Bash version
+│   ├── system_admin_tool.sh           # Bash main script
 │   └── modules/                       # Bash modules directory
-│       ├── show_menu.sh               # Menu display
-│       ├── show_system_users.sh       # User management
-│       ├── show_disk_information.sh   # Disk information
-│       ├── find_largest_files.sh      # File search
-│       ├── show_memory_usage.sh       # Memory statistics
-│       └── backup_directory_to_usb.sh # Backup functionality
+│       ├── show_menu.sh
+│       ├── show_system_users.sh
+│       ├── show_disk_information.sh
+│       ├── find_largest_files.sh
+│       ├── show_memory_usage.sh
+│       └── backup_directory_to_usb.sh
 │
 └── powershell/                        # Windows implementation
     ├── README.md                      # PowerShell-specific documentation
-    ├── system_admin_tool.ps1          # Main entry point for PowerShell version
+    ├── system_admin_tool.ps1          # PowerShell main script
     └── modules/                       # PowerShell modules directory
-        ├── Show-Menu.ps1              # Menu display
-        ├── Show-SystemUsers.ps1       # User management
-        ├── Show-DiskInformation.ps1   # Disk information
-        ├── Find-LargestFiles.ps1      # File search
-        ├── Show-MemoryUsage.ps1       # Memory statistics
-        └── Backup-DirectoryToUSB.ps1  # Backup functionality
+        ├── Show-Menu.ps1
+        ├── Show-SystemUsers.ps1
+        ├── Show-DiskInformation.ps1
+        ├── Find-LargestFiles.ps1
+        ├── Show-MemoryUsage.ps1
+        └── Backup-DirectoryToUSB.ps1
 ```
 
 ## 🔧 Requirements
 
 ### Linux (Bash Version)
 
-- **Operating System**: Linux or Unix-based system (Ubuntu, Debian, CentOS, RHEL, etc.)
+- **Operating System**: Linux or Unix-based system (Ubuntu, Debian, CentOS, RHEL, etc.) or WSL (Windows Subsystem for Linux)
 - **Shell**: Bash 4.0 or higher
 - **Permissions**: Root or sudo access recommended for full functionality
 - **Dependencies**:
-  - Standard Unix utilities (`find`, `du`, `df`, `awk`, `grep`)
+  - Standard Unix utilities (`find`, `du`, `df`, `awk`, `grep`, `stat`)
   - `rsync` (optional, for enhanced backup functionality)
 
 ### Windows (PowerShell Version)
@@ -67,238 +66,66 @@ final_project_so/
 - **Operating System**: Windows 10 or higher, Windows Server 2016 or higher
 - **PowerShell**: PowerShell 5.1 or higher (PowerShell 7+ recommended)
 - **Permissions**: Administrator privileges recommended for full functionality
-- **Dependencies**: All required cmdlets are built into PowerShell
+- **Dependencies**: All required cmdlets are built into PowerShell (no external modules needed)
 
-## 🚀 Installation
+## 🚀 Installation & Usage
 
-### Linux (Bash)
+**For detailed installation instructions and platform-specific steps, see:**
+- **Linux/Bash**: [`bash/README.md`](bash/README.md)
+- **Windows/PowerShell**: [`powershell/README.md`](powershell/README.md)
 
-1. Clone or download the project to your system:
+### Quick Start
 
-   ```bash
-   cd ~/Desktop
-   git clone <repository-url> final_project_so
-   # Or extract from zip file
-   ```
-
-2. Navigate to the bash directory:
-
-   ```bash
-   cd final_project_so/bash
-   ```
-
-3. Make the main script executable:
-
-   ```bash
-   chmod +x system_admin_tool.sh
-   ```
-
-4. Make all module scripts executable (optional, for direct testing):
-
-   ```bash
-   chmod +x modules/*.sh
-   ```
-
-### Windows (PowerShell)
-
-1. Clone or download the project to your system:
-
-   ```powershell
-   cd C:\Users\YourUsername\Desktop
-   # Extract from zip or clone repository
-   ```
-
-2. Navigate to the powershell directory:
-
-   ```powershell
-   cd final_project_so\powershell
-   ```
-
-3. If you encounter execution policy restrictions, run:
-
-   ```powershell
-   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-   ```
-
-## 💻 Usage
-
-### Linux (Bash)
-
-#### Standard Execution
-
+**Linux (Bash):**
 ```bash
-cd ~/Desktop/final_project_so/bash
-./system_admin_tool.sh
-```
-
-#### With Elevated Privileges (Recommended)
-
-```bash
-cd ~/Desktop/final_project_so/bash
+cd system-admin-tool/bash
+chmod +x system_admin_tool.sh modules/*.sh
 sudo ./system_admin_tool.sh
 ```
 
-#### From Any Location
-
-```bash
-sudo /path/to/final_project_so/bash/system_admin_tool.sh
-```
-
-### Windows (PowerShell)
-
-#### Standard Execution
-
+**Windows (PowerShell):**
 ```powershell
-cd C:\Users\YourUsername\Desktop\final_project_so\powershell
-.\system_admin_tool.ps1
+cd system-admin-tool\powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser  # If needed
+.\system_admin_tool.ps1  # Run as Administrator
 ```
-
-#### As Administrator (Recommended)
-
-1. Right-click PowerShell and select "Run as Administrator"
-2. Navigate to the script location:
-
-   ```powershell
-   cd C:\Users\YourUsername\Desktop\final_project_so\powershell
-   ```
-
-3. Execute the script:
-
-   ```powershell
-   .\system_admin_tool.ps1
-   ```
 
 ## 📖 Module Documentation
 
-### Main Script
+Both versions provide 6 core modules with equivalent functionality:
 
-Both versions (Bash and PowerShell) follow a similar architecture:
+### 1. Show System Users
+Lists all user accounts with last login information.
+- **Bash**: Filters UID ≥ 1000 + root, uses `lastlog`
+- **PowerShell**: Uses `Get-LocalUser` with LastLogon
 
-**Responsibilities:**
+### 2. Show Disk Information
+Displays filesystem statistics with sizes in bytes and usage percentages.
+- **Bash**: Uses `df -B1` (excludes tmpfs/devtmpfs)
+- **PowerShell**: Uses `Get-PSDrive` and `Get-Volume`
 
-- Load and validate all module files
-- Define color schemes for the UI
-- Display the main menu
-- Handle user input and route to appropriate modules
-- Manage the program execution loop
-- Error handling and validation
+### 3. Find Largest Files
+Searches and ranks the top 10 largest files in a specified path.
+- **Bash**: Uses `find`, `du -b`, `sort`
+- **PowerShell**: Uses `Get-ChildItem` with recursive search
 
-### Module Overview
+### 4. Show Memory Usage
+Displays physical memory and swap/page file statistics in bytes and percentages.
+- **Bash**: Reads `/proc/meminfo`
+- **PowerShell**: Uses `Get-CimInstance` (Win32 classes)
 
-#### 1. Show Menu
+### 5. Backup Directory to USB
+Creates full backups with automatic catalog generation.
+- **Bash**: Prefers `rsync`, falls back to `cp`
+- **PowerShell**: Uses `Copy-Item` with progress indication
 
-**Bash**: `modules/show_menu.sh` | **PowerShell**: `modules/Show-Menu.ps1`
+**Catalog includes**: File name, path, modification date, and size in bytes.
 
-Displays the main menu interface with all available options.
+### 6. Show Menu
+Interactive menu interface with color-coded options for all operations.
 
-**Features:**
+---
 
-- Colorized output for better visibility
-- Clear screen for clean presentation
-- Lists all available operations
-
-#### 2. Show System Users
-
-**Bash**: `modules/show_system_users.sh` | **PowerShell**: `modules/Show-SystemUsers.ps1`
-
-Displays comprehensive information about system users.
-
-**Features:**
-
-- Lists all users with UID ≥ 1000 and root user
-- Shows username, UID, and last login information
-- Displays total user count
-- Filters out system service accounts
-
-**Bash Commands Used:** `awk`, `lastlog`, reads `/etc/passwd`  
-**PowerShell Cmdlets Used:** `Get-LocalUser`
-
-#### 3. Show Disk Information
-
-**Bash**: `modules/show_disk_information.sh` | **PowerShell**: `modules/Show-DiskInformation.ps1`
-
-Provides detailed filesystem and disk usage statistics.
-
-**Features:**
-
-- Displays all mounted filesystems
-- Shows total size, used space, and available space
-- Calculates and displays usage percentages
-- Excludes temporary filesystems (tmpfs, devtmpfs)
-
-**Bash Commands Used:** `df`, `grep`, `awk`  
-**PowerShell Cmdlets Used:** `Get-PSDrive`
-
-#### 4. Find Largest Files
-
-**Bash**: `modules/find_largest_files.sh` | **PowerShell**: `modules/Find-LargestFiles.ps1`
-
-Searches and identifies the largest files on the system.
-
-**Features:**
-
-- Interactive path selection
-- Lists available filesystems before search
-- Displays top 10 largest files
-- Shows rank, size, filename, and full path
-- Suppresses permission errors for inaccessible directories
-
-**Bash Commands Used:** `find`, `du`, `sort`  
-**PowerShell Cmdlets Used:** `Get-ChildItem`, `Test-Path`
-
-#### 5. Show Memory Usage
-
-**Bash**: `modules/show_memory_usage.sh` | **PowerShell**: `modules/Show-MemoryUsage.ps1`
-
-Displays real-time memory and swap usage statistics.
-
-**Features:**
-
-- Physical memory statistics (total, used, free)
-- Swap/page file information
-- Percentage calculations
-- Formatted output in MB or GB
-
-**Bash Commands Used:** `grep`, `awk`, reads `/proc/meminfo`  
-**PowerShell Cmdlets Used:** `Get-CimInstance` (Win32_OperatingSystem, Win32_PageFileUsage)
-
-#### 6. Backup Directory to USB
-
-**Bash**: `modules/backup_directory_to_usb.sh` | **PowerShell**: `modules/Backup-DirectoryToUSB.ps1`
-
-Creates comprehensive backups with automatic catalog generation.
-
-**Features:**
-
-- Interactive source and destination selection
-- Displays available mount points/drives
-- Creates destination directory if it doesn't exist
-- Uses `rsync` (Bash) for efficient copying when available
-- Generates detailed backup catalog with:
-  - **File Name** - The name of each backed up file
-  - **File Path** - Relative path from source directory
-  - **Last Modified** - Timestamp of last modification
-  - **Size** - File size in bytes
-- Progress indication during backup
-- Summary statistics upon completion
-
-**Bash Commands Used:** `rsync`, `cp`, `stat`, `find`, `basename`  
-**PowerShell Cmdlets Used:** `Copy-Item`, `New-Item`, `Get-ChildItem`, `Out-File`
-
-**Catalog Format Example:**
-
-```
-============================================
-BACKUP CATALOG
-============================================
-Backup Date: 2025-11-03 14:30:45
-Source Directory: /home/user/documents
-Total Files Backed Up: 156
-============================================
-
-File Name                      File Path                                                    Last Modified             Size (Bytes)
----------                      ---------                                                    -------------             -----------
-report.pdf                     documents/reports/report.pdf                                 2025-11-03 10:15:22       2048576
-image.png                      images/screenshots/image.png                                 2025-11-02 18:45:10       1024000
-...
-```
+**For detailed technical documentation, commands/cmdlets used, and troubleshooting:**
+- **Bash Version**: [`bash/README.md`](bash/README.md)
+- **PowerShell Version**: [`powershell/README.md`](powershell/README.md)

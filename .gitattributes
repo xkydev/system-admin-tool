@@ -1,0 +1,3 @@
+# For shell scripts, use LF endings only
+bash/*.sh text eol=lf
+bash/modules/*.sh text eol=lf

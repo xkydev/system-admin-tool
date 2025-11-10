@@ -17,6 +17,38 @@ try {
 }
 
 # ============================================================================
+# Helper Functions
+# ============================================================================
+function Wait-ForKeyPress {
+    <#
+    .SYNOPSIS
+        Waits for user to press a key before continuing.
+    
+    .DESCRIPTION
+        Displays a "Press any key to continue" message and waits for user input.
+        Compatible with all PowerShell environments (Console, ISE, VS Code).
+    
+    .EXAMPLE
+        Wait-ForKeyPress
+    #>
+    
+    Write-Host "`nPress any key to continue..." -ForegroundColor Gray
+    
+    # Check if RawUI is available (not available in ISE or some terminals)
+    if ($Host.UI.RawUI -and $Host.UI.RawUI.KeyAvailable -ne $null) {
+        try {
+            $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+        } catch {
+            # Fallback to Read-Host if ReadKey fails
+            $null = Read-Host
+        }
+    } else {
+        # Fallback for environments without RawUI (like ISE)
+        $null = Read-Host
+    }
+}
+
+# ============================================================================
 # Main Program Loop
 # ============================================================================
 function Main {
@@ -36,28 +68,23 @@ function Main {
         switch ($choice) {
             "1" {
                 Show-SystemUsers
-                Write-Host "`nPress any key to continue..." -ForegroundColor Gray
-                $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+                Wait-ForKeyPress
             }
             "2" {
                 Show-DiskInformation
-                Write-Host "`nPress any key to continue..." -ForegroundColor Gray
-                $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+                Wait-ForKeyPress
             }
             "3" {
                 Find-LargestFiles
-                Write-Host "`nPress any key to continue..." -ForegroundColor Gray
-                $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+                Wait-ForKeyPress
             }
             "4" {
                 Show-MemoryUsage
-                Write-Host "`nPress any key to continue..." -ForegroundColor Gray
-                $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+                Wait-ForKeyPress
             }
             "5" {
                 Backup-DirectoryToUSB
-                Write-Host "`nPress any key to continue..." -ForegroundColor Gray
-                $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+                Wait-ForKeyPress
             }
             "6" {
                 Write-Host "`nExiting... Goodbye!" -ForegroundColor Green
