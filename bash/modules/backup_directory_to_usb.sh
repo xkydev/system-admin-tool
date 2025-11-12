@@ -35,11 +35,23 @@ backup_directory_to_usb() {
         echo -e "${GREEN}Created destination directory: $dest_drive${NC}"
     fi
 
+    # Confirmation step
+    echo ""
+    echo -e "${CYAN}--- CONFIRMATION ---${NC}"
+    echo -e "You are about to back up the following directory:"
+    echo -e "  ${WHITE}Source:      $source_dir${NC}"
+    echo -e "  ${WHITE}Destination: $dest_drive${NC}"
+    echo ""
+    read -p "Do you want to proceed? (S/N): " confirm
+    if [[ ! "$confirm" =~ ^[Ss]$ ]]; then
+        echo ""
+        echo -e "${RED}Backup cancelled by user.${NC}"
+        return
+    fi
+
     # Perform backup
     echo ""
     echo -e "${YELLOW}Starting backup...${NC}"
-    echo -e "${WHITE}Source: $source_dir${NC}"
-    echo -e "${WHITE}Destination: $dest_drive${NC}"
     echo ""
 
     # Count total files
